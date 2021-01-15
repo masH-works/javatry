@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 the original author or authors.
+ * Copyright 2019-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,11 +37,11 @@ public class Step19DevilTest extends PlainTestCase {
      * スペースの中のリストの中で最初に見つかるBigDecimalの一の位の数字と同じ色の長さのカラーボックスの一番下のスペースに入っているものは？) <br>
      * 
      * addition: (same meaning)
-     *  1. colorbox(lets call it A) that contains null 
-     *  2. colorbox(B) that name ends with third character of colorbox A
-     *  3. colorbox(C) that the list in the space contains the first BigDecimal that 2nd decimal place is same as tens place of depth of color-box B
-     *  4. colorbox(D) that length of name is same as 1st place number of the target BigDecimal value found in the colorbox C
-     *  5. the question is what is in the lowest space of colorbox D?
+     *  Find a colorbox(lets call it A) that contains null, 
+     *  Next find a colorbox(B) that name ends with third character of colorbox A,
+     *  Next find a colorbox(C) that the list in the space contains a number that 2nd decimal place is same as tens place of depth of color-box B,
+     *  Next find a colorbox(D) that length of name is same as 1st place number of BigDecimal value found in the colorbox C,
+     *  At last, the question is what is in the lowest space of colorbox D?
      */
     public void test_too_long() {
     }

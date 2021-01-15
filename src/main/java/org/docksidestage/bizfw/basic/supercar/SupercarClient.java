@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 the original author or authors.
+ * Copyright 2019-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,15 +30,6 @@ public class SupercarClient {
 
     public void buySupercar() {
         SupercarDealer dealer = createDealer();
-        while (true) {
-            doBuySupercar(dealer);
-            if (myCarList.size() >= 100) {
-                break;
-            }
-        }
-    }
-
-    protected void doBuySupercar(SupercarDealer dealer) {
         String clientRequirement = "steering wheel is like sea";
         Supercar orderedCustomCar = dealer.orderSupercar(clientRequirement);
         myCarList.add(orderedCustomCar);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 the original author or authors.
+ * Copyright 2019-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package org.docksidestage.javatry.colorbox;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.docksidestage.bizfw.colorbox.ColorBox;
@@ -60,6 +61,32 @@ public class Step11ClassicStringTest extends PlainTestCase {
      * (カラーボックスに入ってる文字列の中で、一番長い文字列は？)
      */
     public void test_length_findMax() {
+        List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
+        int maxStringLength = 0;
+        String maxString = new String();
+        if (colorBoxList.isEmpty()) {
+            log("*not found");
+            return;
+        }
+        ArrayList<Object> objects = new ArrayList<Object>();
+        //リストを作る時点でnullをはじく
+        colorBoxList.forEach(colorBox -> colorBox.getSpaceList().forEach(space -> objects.add(space.getContent())));
+        for (Object object : objects) {
+            if (object != null) {
+                //new String().getClass()->Stiring.classと等価
+                if (object.getClass() == String.class) {
+                    String tmp = object.toString();//(String)object.getContent()のがいいかもしれない
+                    log(tmp);
+                    if (maxStringLength < tmp.length()) {
+                        maxStringLength = tmp.length();
+                        maxString = tmp;
+                    }
+                }
+            }
+        }
+        //同率首位の場合は最初のものを使用
+        log(maxString + ":" + maxStringLength);
+
     }
 
     /**
@@ -67,6 +94,44 @@ public class Step11ClassicStringTest extends PlainTestCase {
      * (カラーボックスに入ってる文字列の中で、一番長いものと短いものの差は何文字？)
      */
     public void test_length_findMaxMinDiff() {
+        List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
+        // intでなくIntegerでnullからスタートすべき存在して0（空文字）と存在しない場合の区別をつける
+        Integer MaxStringLength = null;
+        Integer MinStringLength = null;
+        String MaxString = new String();
+        String MinString = new String();
+        if (colorBoxList.isEmpty()) {
+            log("*not found");
+            return;
+        }
+        ArrayList<Object> objects = new ArrayList<Object>();
+        colorBoxList.forEach(colorBox -> colorBox.getSpaceList().forEach(space -> objects.add(space.getContent())));
+        if (objects != null) {
+            MaxStringLength = Integer.MIN_VALUE;
+            MinStringLength = Integer.MAX_VALUE;
+        }
+        for (Object object : objects) {
+            if (object != null) {
+                log(object.getClass());
+                if (object.getClass() == new String().getClass()) {
+                    String tmp = object.toString();
+                    log(tmp);
+                    if (MaxStringLength < tmp.length()) {
+                        MaxStringLength = tmp.length();
+                        MaxString = tmp;
+                    }
+                    if (MinStringLength > tmp.length()) {
+                        MinStringLength = tmp.length();
+                        MinString = tmp;
+                    }
+                }
+            }
+        }
+        log("max " + MaxString + ":" + MaxStringLength);
+        log("min " + MinString + ":" + MinStringLength);
+        int diffLength = MaxStringLength - MinStringLength;
+        log("diff " + diffLength);
+
     }
 
     /**
@@ -74,20 +139,85 @@ public class Step11ClassicStringTest extends PlainTestCase {
      * (カラーボックスに入ってる値 (文字列以外はtoString()) の中で、二番目に長い文字列は？ (ソートなしで))
      */
     public void test_length_findSecondMax() {
+        //+alpha:同率を考慮しよう
+        List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
+        if (colorBoxList.isEmpty()) {
+            log("*not found");
+            return;
+        }
+        ArrayList<Object> objects = new ArrayList<Object>();
+        ArrayList<String> contentsStringList = new ArrayList<String>();
+        colorBoxList.forEach(colorBox -> colorBox.getSpaceList().forEach(space -> objects.add(space.getContent())));
+        for (Object object : objects) {
+            if (object != null) {
+                contentsStringList.add(object.toString());
+            }
+        }
+        //        log(contentsStringList);
+        String firstString = new String();
+        String secondString = new String();
+        Integer firstStringlength = firstString.length();
+        Integer secondStringLength = secondString.length();
+        for (String elment : contentsStringList) {
+            if (firstStringlength < elment.length()) {
+                secondStringLength = firstStringlength;
+                secondString = firstString;
+                firstStringlength = elment.length();
+                firstString = elment;
+            } else if (secondStringLength < elment.length() && elment.length() <= firstStringlength) {
+                secondStringLength = elment.length();
+                secondString = elment;
+            }
+        }
+        log("second : " + secondString + "(" + secondStringLength + ")");
     }
 
     /**
      * How many total lengths of strings in color-boxes? <br>
-     * (カラーボックスに入ってる文字列の長さの合計は？)
+     * (　カラーボックスに入ってる文字列の長さの合計は？)
      */
     public void test_length_calculateLengthSum() {
+        List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
+        int sumStringLength = 0;
+        if (colorBoxList.isEmpty()) {
+            log("*not found");
+            return;
+        }
+        ArrayList<Object> objects = new ArrayList<Object>();
+        //リストを作る時点でnullをはじく
+        colorBoxList.forEach(colorBox -> colorBox.getSpaceList().forEach(space -> objects.add(space.getContent())));
+        for (Object object : objects) {
+            if (object != null) {
+                //new String().getClass()->Stiring.classと等価
+                if (object.getClass() == String.class) {
+                    String tmp = object.toString();//(String)object.getContent()のがいいかもしれない
+                    sumStringLength += tmp.length();
+
+                }
+            }
+        }
+        log(sumStringLength);
+
     }
 
     /**
      * Which color name has max length in color-boxes? <br>
-     * (カラーボックスの中で、色の名前が一番長いものは？)
+     * (　カラーボックスの中で、色の名前が一番長いものは？)
      */
     public void test_length_findMaxColorSize() {
+        List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
+        ArrayList<String> colorsArray = new ArrayList<String>();
+        colorBoxList.forEach(colorBox -> colorsArray.add(colorBox.getColor().getColorName()));
+        Integer maxLength = -1;
+        String maxLengthColorNameBox = new String();
+        for (String color : colorsArray) {
+            if (color.length() > maxLength) {
+                maxLength = color.length();
+                maxLengthColorNameBox = color;
+            }
+        }
+        //        最初のカラーボックスのみ表示
+        log(maxLengthColorNameBox);
     }
 
     // ===================================================================================

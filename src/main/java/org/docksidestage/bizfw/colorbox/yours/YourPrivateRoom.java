@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 the original author or authors.
+ * Copyright 2019-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -179,7 +179,7 @@ public class YourPrivateRoom {
         return colorBox;
     }
 
-    protected StandardColorBox makeEighthColorBox() { // duplicate color here
+    private StandardColorBox makeEighthColorBox() { // duplicate color here
         StandardColorBox colorBox = new StandardColorBox(new BoxColor("yellow"), new BoxSize(30, 50, 40));
         Set<String> set = new HashSet<String>();
         set.add("2019/04/22");

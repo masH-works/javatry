@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 the original author or authors.
+ * Copyright 2019-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,14 +17,15 @@ package org.docksidestage.bizfw.basic.buyticket;
 
 /**
  * @author jflute
+ * @author masH
  */
 public class TicketBooth {
-
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
     private static final int MAX_QUANTITY = 10;
-    private static final int ONE_DAY_PRICE = 7400; // when 2019/06/15
+    public static final int ONE_DAY_PRICE = 7400; // when 2019/06/15
+    public static final int TWO_DAY_PRICE = 13200;
 
     // ===================================================================================
     //                                                                           Attribute
@@ -41,23 +42,50 @@ public class TicketBooth {
     // ===================================================================================
     //                                                                          Buy Ticket
     //                                                                          ==========
-    public void buyOneDayPassport(int handedMoney) {
+    public TicketBuyResult buyOneDayPassport(int handedMoney) {
+        int price = ONE_DAY_PRICE;
+        doBuyPassport(handedMoney, price);
+        int change = handedMoney - price;
+        return new TicketBuyResult(new OneDayTicket(price), change);
+    }
+
+    public TicketBuyResult buyTwoDayPassport(int handedMoney) {
+        int price = TWO_DAY_PRICE;
+        doBuyPassport(handedMoney, price);
+
+        int change = handedMoney - price;
+        return new TicketBuyResult(new DaysTicket(price, 2), change);
+    }
+
+    //    onedayとtwodayのチケットを別々に計上すると少し複雑になる
+    private void doBuyPassport(int handedMoney, int price) {
+        assertExistQuantity();
+        assertShortMoney(handedMoney, price);
+        --quantity;
+        addSalesProceeds(price);
+    }
+
+    private void assertExistQuantity() {
         if (quantity <= 0) {
             throw new TicketSoldOutException("Sold out");
         }
-        --quantity;
-        if (handedMoney < ONE_DAY_PRICE) {
+    }
+
+    private void assertShortMoney(int handedMoney, int price) {
+        if (handedMoney < price) {
             throw new TicketShortMoneyException("Short money: " + handedMoney);
         }
+    }
+
+    private void addSalesProceeds(int price) {
         if (salesProceeds != null) {
-            salesProceeds = salesProceeds + handedMoney;
+            salesProceeds += price;
         } else {
-            salesProceeds = handedMoney;
+            salesProceeds = price;
         }
     }
 
     public static class TicketSoldOutException extends RuntimeException {
-
         private static final long serialVersionUID = 1L;
 
         public TicketSoldOutException(String msg) {
@@ -66,7 +94,6 @@ public class TicketBooth {
     }
 
     public static class TicketShortMoneyException extends RuntimeException {
-
         private static final long serialVersionUID = 1L;
 
         public TicketShortMoneyException(String msg) {

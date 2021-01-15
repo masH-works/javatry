@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 the original author or authors.
+ * Copyright 2019-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,7 @@ public class Step02IfForTest extends PlainTestCase {
         } else {
             sea = 7;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 7
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -67,7 +67,7 @@ public class Step02IfForTest extends PlainTestCase {
         } else {
             sea = 9;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? =>7 
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -91,7 +91,7 @@ public class Step02IfForTest extends PlainTestCase {
         if (land) {
             sea = 10;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 10
     }
 
     // ===================================================================================
@@ -107,7 +107,8 @@ public class Step02IfForTest extends PlainTestCase {
                 sea = stage;
             }
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => broadway
+        //answer=>dockside
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -117,7 +118,7 @@ public class Step02IfForTest extends PlainTestCase {
         for (String stage : stageList) {
             sea = stage;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => magiclamp
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -133,7 +134,7 @@ public class Step02IfForTest extends PlainTestCase {
                 break;
             }
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => hangar
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -142,14 +143,14 @@ public class Step02IfForTest extends PlainTestCase {
         StringBuilder sb = new StringBuilder();
         stageList.forEach(stage -> {
             if (sb.length() > 0) {
-                return;
+                return;//ここではcontinueに近いうごき
             }
             if (stage.contains("i")) {
                 sb.append(stage);
             }
         });
         String sea = sb.toString();
-        log(sea); // your answer? => 
+        log(sea); // your answer? => dockside
     }
 
     // ===================================================================================
@@ -161,6 +162,27 @@ public class Step02IfForTest extends PlainTestCase {
      */
     public void test_iffor_making() {
         // write if-for here
+        //        List<String> ansList = prepareStageList();
+        //        for (String stage : ansList) {
+        //            if (!stage.contains("a")) {
+        //                ansList.remove(stage);
+        //            }
+        //        }
+        //        for (String ans : ansList) {
+        //            log(ans);
+        //        }
+        prepareStageList();
+        List<String> stageList = prepareStageList();
+        List<String> ansList = new ArrayList<>();
+        for (String stage : stageList) {
+            if (stage.contains("a")) {
+                ansList.add(stage);
+            }
+        }
+        for (String ans : ansList) {
+            log(ans);
+        }
+
     }
 
     // ===================================================================================
@@ -171,6 +193,7 @@ public class Step02IfForTest extends PlainTestCase {
      * (foreach文をforEach()メソッドへの置き換えてみましょう (修正前と修正後で実行結果が同じになるように))
      */
     public void test_iffor_refactor_foreach_to_forEach() {
+        //        TODO masH(2019/8/23)先にstep03
         List<String> stageList = prepareStageList();
         String sea = null;
         for (String stage : stageList) {

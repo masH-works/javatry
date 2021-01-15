@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 the original author or authors.
+ * Copyright 2019-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ import org.docksidestage.unit.PlainTestCase;
  * @author your_name_here
  */
 public class Step04MethodTest extends PlainTestCase {
-
     // ===================================================================================
     //                                                                         Method Call
     //                                                                         ===========
@@ -35,15 +34,16 @@ public class Step04MethodTest extends PlainTestCase {
      */
     public void test_method_call_basic() {
         String sea = supplySomething();
-        log(sea); // your answer? =>
+        log(sea); // your answer? =>insupply:{} over
+        //answer->over
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_method_call_many() {
-        String sea = functionSomething("mystic");
+        String sea = functionSomething("mystic");//mysmys
         consumeSomething(supplySomething());
         runnableSomething();
-        log(sea); // your answer? => 
+        log(sea); // your answer? => mysmys
     }
 
     private String functionSomething(String name) {
@@ -72,11 +72,12 @@ public class Step04MethodTest extends PlainTestCase {
         St4MutableStage mutable = new St4MutableStage();
         int sea = 904;
         boolean land = false;
-        helloMutable(sea - 4, land, mutable);
-        if (!land) {
+        helloMutable(sea - 4, land, mutable);//test_method_objectのseaには変更を与えない
+        //↑のsea-4という引数はsea=sea-4でもコンパイルが通る（外側に影響が出る）
+        if (!land) {//done
             sea = sea + mutable.getStageName().length();
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 905
     }
 
     private int helloMutable(int sea, Boolean land, St4MutableStage piari) {
@@ -107,15 +108,15 @@ public class Step04MethodTest extends PlainTestCase {
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_method_instanceVariable() {
-        hasAnnualPassport = true;
+        hasAnnualPassport = true;//unneed
         int sea = inParkCount;
-        offAnnualPassport(hasAnnualPassport);
+        offAnnualPassport(hasAnnualPassport);//unneed
         for (int i = 0; i < 100; i++) {
             goToPark();
         }
         ++sea;
         sea = inParkCount;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 0
     }
 
     private void offAnnualPassport(boolean hasAnnualPassport) {
@@ -135,29 +136,50 @@ public class Step04MethodTest extends PlainTestCase {
     /**
      * Make private methods as followings, and comment out caller program in test method:
      * <pre>
-     * o replaceAwithB(): has one argument as String, returns argument replaced "A" with "B" as String 
-     * o replaceCwithB(): has one argument as String, returns argument replaced "C" with "B" as String 
-     * o quote(): has two arguments as String, returns first argument quoted by second argument (quotation) 
+     * o replaceAtoB(): has one argument as String, returns argument replaced "A" with "B" as String 
+     * o replaceCtoB(): has one argument as String, returns argument replaced "C" with "B" as String 
+     * o addPrefix(): has two arguments as String, returns combined first argument with ":" with second argument 
      * o isAvailableLogging(): no argument, returns private instance variable "availableLogging" initialized as true (also make it)  
      * o showSea(): has one argument as String argument, no return, show argument by log()
      * </pre>
      * (privateメソッドを以下のように定義して、テストメソッド内の呼び出しプログラムをコメントアウトしましょう):
      * <pre>
-     * o replaceAwithB(): 一つのString引数、引数を "A" を "B" に置き換えられたStringを戻す 
-     * o replaceCwithB(): 一つのString引数、引数を "C" を "B" に置き換えられたStringを戻す 
-     * o quote(): 二つのString引数、第一引数を第二引数(引用符)で囲ったものを戻す 
+     * o replaceAtoB(): 一つのString引数、引数を "A" を "B" に置き換えらたStringを戻す 
+     * o replaceCtoB(): 一つのString引数、引数を "C" を "B" に置き換えらたStringを戻す 
+     * o addPrefix(): 二つのString引数、第一引数と ":" と第二引数を連結したものを戻す 
      * o isAvailableLogging(): 引数なし、privateのインスタンス変数 "availableLogging" (初期値:true) を戻す (それも作る)  
      * o showSea(): 一つのString引数、戻り値なし、引数をlog()で表示する
      * </pre>
      */
     public void test_method_making() {
-        // comment out after making these methods
-        //String replaced = replaceCwithB(replaceAwithB("ABC"));
-        //String sea = quote(replaced, "'");
-        //if (isAvailableLogging()) {
-        //    showSea(sea);
-        //}
+        //comment out after making these methods
+        String replaced = replaceCtoB(replaceAtoB("ABC"));
+        String sea = addPrefix("broadway", replaced);
+        if (isAvaiableLogging()) {
+            showSea(sea);
+        }
     }
 
-    // write methods here
+    // write methods 
+    private boolean availableLogging = true;
+
+    private String replaceAtoB(String str) {
+        return str.replace("A", "B");
+    }
+
+    private String replaceCtoB(String str) {
+        return str.replace("C", "B");
+    }
+
+    private String addPrefix(String prefix, String str) {
+        return prefix + ":" + str;
+    }
+
+    private boolean isAvaiableLogging() {
+        return availableLogging;
+    }
+
+    private void showSea(String str) {
+        log(str);
+    }
 }

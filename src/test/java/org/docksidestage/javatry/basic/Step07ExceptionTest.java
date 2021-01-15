@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 the original author or authors.
+ * Copyright 2019-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -117,28 +117,26 @@ public class Step07ExceptionTest extends PlainTestCase {
     }
 
     private void throwCauseFirstLevel() {
-        int symbol = 1;
+        int count = -1;
         try {
-            throwCauseSecondLevel(symbol);
+            throwCauseSecondLevel(count);
         } catch (IllegalArgumentException e) {
-            throw new IllegalStateException("Failed to call the second help method: symbol=" + symbol, e);
+            throw new IllegalStateException("Failed to call the second help method: " + count, e);
         }
     }
 
-    private void throwCauseSecondLevel(int symbol) {
+    private void throwCauseSecondLevel(int count) {
         try {
-            --symbol;
-            symbol--;
-            if (symbol < 0) {
-                throwCauseThirdLevel(symbol);
+            if (count < 0) {
+                throwCauseThirdLevel(count);
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Failed to call the third help method: symbol=" + symbol, e);
+            throw new IllegalArgumentException("Failed to call the third help method: " + count, e);
         }
     }
 
-    private void throwCauseThirdLevel(int symbol) {
-        if (symbol < 0) {
+    private void throwCauseThirdLevel(int count) {
+        if (count < 0) {
             Integer.valueOf("piari");
         }
     }

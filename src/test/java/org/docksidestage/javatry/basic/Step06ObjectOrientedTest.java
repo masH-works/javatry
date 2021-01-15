@@ -19,6 +19,7 @@ import org.docksidestage.bizfw.basic.buyticket.OneDayTicket;
 import org.docksidestage.bizfw.basic.buyticket.TicketBooth;
 import org.docksidestage.bizfw.basic.objanimal.Animal;
 import org.docksidestage.bizfw.basic.objanimal.BarkedSound;
+import org.docksidestage.bizfw.basic.objanimal.CannotRunFastAnimal;
 import org.docksidestage.bizfw.basic.objanimal.Cat;
 import org.docksidestage.bizfw.basic.objanimal.Dog;
 import org.docksidestage.bizfw.basic.objanimal.Zombie;
@@ -82,7 +83,8 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         // [do in park now!!!]
         //
         if (alreadyIn) {
-            throw new IllegalStateException("Already in park by this ticket: displayPrice=" + quantity);
+            //            throw new IllegalStateException("Already in park by this ticket: displayPrice=" + quantity);
+            throw new IllegalStateException("Already in park by this ticket: displayPrice=" + displayPrice);
         }
         alreadyIn = true;
 
@@ -169,6 +171,9 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         // [final process]
         //
         saveBuyingHistory(booth, ticket);
+
+        // オブジェクトとは何か
+        // 属性であったり操作であったりといった情報をモノという単位で集約し利用しやすくするもの？
     }
 
     private void saveBuyingHistory(TicketBooth booth, OneDayTicket ticket) {
@@ -312,6 +317,8 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_polymorphism_makeConcrete() {
         // your confirmation code here
+        Loudable cow = new CannotRunFastAnimal();
+        log(cow.soundLoudly());
     }
 
     /**
@@ -320,6 +327,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_polymorphism_makeInterface() {
         // your confirmation code here
+
     }
 
     // ===================================================================================

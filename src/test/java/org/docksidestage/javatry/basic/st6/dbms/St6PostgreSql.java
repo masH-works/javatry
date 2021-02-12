@@ -21,7 +21,7 @@ package org.docksidestage.javatry.basic.st6.dbms;
  */
 public class St6PostgreSql extends St6RDBMS {
 
-    public String createPagingQuery(int offset, int pageSize) {
+    protected String doBuildingPagingQuery(int offset, int pageSize) {
         return "offset " + offset + " limit " + pageSize;
     }
 }

@@ -22,5 +22,4 @@ public abstract class St6RDBMS {
     }
 
     protected abstract String doBuildingPagingQuery(int offset, int pageSize);
-
 }

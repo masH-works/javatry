@@ -1,6 +1,20 @@
 package org.docksidestage.bizfw.basic.objanimal;
 
-public class CannotRunFastAnimal extends Animal {
+import org.docksidestage.bizfw.basic.objanimal.runner.SlowRunner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * 
+ * @author masH
+ *
+ */
+public class Cow extends Animal implements SlowRunner {
+    // ===================================================================================
+    //                                                                          Definition
+    //                                                                          ==========
+    private static final Logger logger = LoggerFactory.getLogger(Cow.class);
+
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
@@ -9,13 +23,17 @@ public class CannotRunFastAnimal extends Animal {
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public CannotRunFastAnimal() {
-        hitPoint = getInitialHitPoint();
+    public Cow() {
+        //        Animal()
     }
 
     @Override
     protected String getBarkWord() {
         return word;
+    }
+
+    public void run() {
+        logger.debug("...walking");
     }
 
 }

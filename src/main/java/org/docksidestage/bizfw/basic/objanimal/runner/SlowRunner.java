@@ -3,6 +3,7 @@ package org.docksidestage.bizfw.basic.objanimal.runner;
 /**
  * @author masH
  */
-public interface walker {
-    void walk();
+public interface SlowRunner {
+
+    void run();
 }

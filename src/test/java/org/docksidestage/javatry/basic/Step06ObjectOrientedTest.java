@@ -27,6 +27,8 @@ import org.docksidestage.bizfw.basic.objanimal.loud.AlarmClock;
 import org.docksidestage.bizfw.basic.objanimal.loud.Loudable;
 import org.docksidestage.bizfw.basic.objanimal.runner.FastRunner;
 import org.docksidestage.bizfw.basic.objanimal.runner.SlowRunner;
+import org.docksidestage.javatry.basic.st6.dbms.St6MySql;
+import org.docksidestage.javatry.basic.st6.dbms.St6PostgreSql;
 import org.docksidestage.unit.PlainTestCase;
 
 /**
@@ -45,7 +47,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
     //                                        Against Object
     //                                        --------------
     /**
-     * Fix several mistakes in buying one-day passport and in-park process. <br>
+     * Fix 5 mistakes in buying one-day passport and in-park process. <br>
      * (OneDayPassportを買って InPark する処理の中で、間違いがいくつかあるので修正しましょう)
      */
     public void test_objectOriented_aboutObject_againstObject() {
@@ -330,7 +332,6 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         // your confirmation code here
         SlowRunner cow = new Cow();
         cow.run();
-
     }
 
     // ===================================================================================
@@ -342,6 +343,11 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_generalization_extractToAbstract() {
         // your confirmation code here
+        St6MySql mySql = new St6MySql();
+        St6PostgreSql postgrelSql = new St6PostgreSql();
+        log(mySql.buildPagingQuery(3, 4));
+        log(postgrelSql.buildPagingQuery(3, 4));
+
     }
 
     /**

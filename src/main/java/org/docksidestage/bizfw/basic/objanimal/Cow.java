@@ -5,9 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ * The object for cow(牛).
  * @author masH
- *
  */
 public class Cow extends Animal implements SlowRunner {
     // ===================================================================================
@@ -24,7 +23,7 @@ public class Cow extends Animal implements SlowRunner {
     //                                                                         Constructor
     //                                                                         ===========
     public Cow() {
-        //        Animal()
+        //Animal()がここで実行されている。
     }
 
     @Override
@@ -35,5 +34,4 @@ public class Cow extends Animal implements SlowRunner {
     public void run() {
         logger.debug("...walking");
     }
-
 }

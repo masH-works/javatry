@@ -31,5 +31,4 @@ public abstract class St6OperationSystem {
     protected abstract String getFileSeparator();
 
     protected abstract String getUserDirectory();
-
 }

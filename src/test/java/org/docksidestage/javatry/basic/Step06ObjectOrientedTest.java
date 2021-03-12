@@ -30,7 +30,7 @@ import org.docksidestage.bizfw.basic.objanimal.runner.SlowRunner;
 import org.docksidestage.javatry.basic.st6.dbms.St6MySql;
 import org.docksidestage.javatry.basic.st6.dbms.St6PostgreSql;
 import org.docksidestage.javatry.basic.st6.os.St6MacOS;
-import org.docksidestage.javatry.basic.st6.os.St6OldWomdowsOS;
+import org.docksidestage.javatry.basic.st6.os.St6OldWindowsOS;
 import org.docksidestage.javatry.basic.st6.os.St6WindowsOS;
 import org.docksidestage.unit.PlainTestCase;
 
@@ -360,7 +360,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         // your confirmation code here
         St6MacOS mac = new St6MacOS("mac");
         St6WindowsOS windows = new St6WindowsOS("windows");
-        St6OldWomdowsOS oldWindows = new St6OldWomdowsOS("oldWindows");
+        St6OldWindowsOS oldWindows = new St6OldWindowsOS("oldWindows");
         log(mac.buildUserResourcePath("/usr/dir/path"));
         log(windows.buildUserResourcePath("/usr/dir/path"));
         log(oldWindows.buildUserResourcePath("/usr/dir/path"));

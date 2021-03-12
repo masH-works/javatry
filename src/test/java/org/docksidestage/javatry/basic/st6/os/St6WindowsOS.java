@@ -1,6 +1,3 @@
-/**
- * 
- */
 package org.docksidestage.javatry.basic.st6.os;
 
 /**
@@ -8,13 +5,8 @@ package org.docksidestage.javatry.basic.st6.os;
  *
  */
 public class St6WindowsOS extends St6OperationSystem {
-
-    /**
-     * @param loginId
-     */
     public St6WindowsOS(String loginId) {
         super(loginId);
-        // TODO Auto-generated constructor stub
     }
 
     protected String getFileSeparator() {

@@ -372,7 +372,8 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
     //                                                                           =========
     /**
      * Extract Animal's bark() process as BarkingProcess class to also avoid large abstract class. <br>
-     * (抽象クラス肥大化を抑制するためにも、Animalのbark()のプロセス(処理)をBarkingProcessクラスとして切り出しましょう)
+     * ( 
+     * 抽象クラス肥大化を抑制するためにも、Animalのbark()のプロセス(処理)をBarkingProcessクラスとして切り出しましょう)
      */
     public void test_objectOriented_writing_withDelegation() {
         // your confirmation code here
@@ -380,7 +381,8 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
 
     /**
      * Is Zombie correct as sub-class of Animal? Analyze it in thirty seconds. (thinking only) <br>
-     * (ゾンビは動物クラスのサブクラスとして適切でしょうか？30秒だけ考えてみましょう (考えるだけでOK))
+     * (
+     * ゾンビは動物クラスのサブクラスとして適切でしょうか？30秒だけ考えてみましょう (考えるだけでOK))
      */
     public void test_objectOriented_zoo() {
         // do nothing here

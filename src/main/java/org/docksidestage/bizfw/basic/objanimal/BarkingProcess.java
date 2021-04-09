@@ -8,14 +8,16 @@ public abstract class BarkingProcess {
     //                                                                          Definition
     //                                                                          ==========
     private static final Logger logger = LoggerFactory.getLogger(BarkingProcess.class);
+    private Animal animal;
 
-    public BarkingProcess() {
+    public BarkingProcess(Animal animal) {
+        this.animal = animal;
     }
 
     public BarkedSound bark() {
         breatheIn();
         prepareAbdominalMuscle();
-        String barkWord = getBarkWord();
+        String barkWord = animal.getBarkWord();
         BarkedSound barkedSound = doBark(barkWord);
         return barkedSound;
     }
@@ -30,10 +32,18 @@ public abstract class BarkingProcess {
         downHitPoint();
     }
 
-    protected abstract String getBarkWord();
-
     protected BarkedSound doBark(String barkWord) {
         downHitPoint();
         return new BarkedSound(barkWord);
+    }
+
+    // ===================================================================================
+    //                                                                           Hit Point
+    //                                                                           =========
+    protected void downHitPoint() {
+        --animal.hitPoint;
+        if (animal.hitPoint == 0) {
+            throw new IllegalStateException("I'm very tired, so I want to sleep" + animal.getBarkWord());
+        }
     }
 }

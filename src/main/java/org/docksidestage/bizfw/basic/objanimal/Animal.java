@@ -46,45 +46,15 @@ public abstract class Animal implements Loudable {
         return 10; // as default
     }
 
-    // ===================================================================================
-    //                                                                               Bark
-    //                                                                              ======
     public BarkedSound bark() {
-        breatheIn();
-        prepareAbdominalMuscle();
-        String barkWord = getBarkWord();
-        BarkedSound barkedSound = doBark(barkWord);
-        return barkedSound;
-    }
+        BarkingProcess barkingProcess = new BarkingProcess(this);
 
-    protected void prepareAbdominalMuscle() {
-        logger.debug("...Using my abdominal muscle"); // dummy implementation
-        downHitPoint();
-    }
-
-    protected void breatheIn() {
-        logger.debug("...Breathing in"); // dummy implementation
-        downHitPoint();
+        return barkingProcess.bark();
     }
 
     protected abstract String getBarkWord();
 
-    protected BarkedSound doBark(String barkWord) {
-        downHitPoint();
-        return new BarkedSound(barkWord);
-    }
-
-    // ===================================================================================
-    //                                                                           Hit Point
-    //                                                                           =========
-    protected void downHitPoint() {
-        --hitPoint;
-        if (hitPoint == 0) {
-            throw new IllegalStateException("I'm very tired, so I want to sleep" + getBarkWord());
-        }
-    }
-
-    // ===================================================================================
+    // ===========================================ssss========================================
     //                                                                               Loud
     //                                                                              ======
     @Override

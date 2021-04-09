@@ -54,12 +54,22 @@ public abstract class Animal implements Loudable {
 
     protected abstract String getBarkWord();
 
-    // ===========================================ssss========================================
+    // ===================================================================================
     //                                                                               Loud
     //                                                                              ======
     @Override
     public String soundLoudly() {
         return bark().getBarkWord();
+    }
+
+    // ===================================================================================
+    //                                                                           Hit Point
+    //                                                                           =========
+    protected void downHitPoint() {
+        --hitPoint;
+        if (hitPoint == 0) {
+            throw new IllegalStateException("I'm very tired, so I want to sleep" + getBarkWord());
+        }
     }
 
     // ===================================================================================

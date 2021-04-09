@@ -18,6 +18,7 @@ package org.docksidestage.bizfw.basic.objanimal;
 /**
  * The object for zombie(ゾンビ).
  * @author jflute
+ * @author masH
  */
 public class Zombie extends Animal {
 
@@ -55,6 +56,7 @@ public class Zombie extends Animal {
     //                                                                              ======
     @Override
     protected void breatheIn() {
+        // TODO: BarkingProcessへとbreatheIn関数が移動したためsuper.BreatheInが処理できなくなっているため対応
         super.breatheIn();
         zombieDiary.countBreatheIn();
     }

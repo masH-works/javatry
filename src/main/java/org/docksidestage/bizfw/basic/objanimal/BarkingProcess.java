@@ -8,8 +8,15 @@ public abstract class BarkingProcess {
     //                                                                          Definition
     //                                                                          ==========
     private static final Logger logger = LoggerFactory.getLogger(BarkingProcess.class);
+
+    // ===================================================================================
+    //                                                                           attribute
+    //                                                                           =========    
     private Animal animal;
 
+    // ===================================================================================
+    //                                                                         Constructor
+    //                                                                         ===========
     public BarkingProcess(Animal animal) {
         this.animal = animal;
     }
@@ -24,26 +31,16 @@ public abstract class BarkingProcess {
 
     protected void prepareAbdominalMuscle() {
         logger.debug("...Using my abdominal muscle"); // dummy implementation
-        downHitPoint();
+        animal.downHitPoint();
     }
 
     protected void breatheIn() {
         logger.debug("...Breathing in"); // dummy implementation
-        downHitPoint();
+        animal.downHitPoint();
     }
 
     protected BarkedSound doBark(String barkWord) {
-        downHitPoint();
+        animal.downHitPoint();
         return new BarkedSound(barkWord);
-    }
-
-    // ===================================================================================
-    //                                                                           Hit Point
-    //                                                                           =========
-    protected void downHitPoint() {
-        --animal.hitPoint;
-        if (animal.hitPoint == 0) {
-            throw new IllegalStateException("I'm very tired, so I want to sleep" + animal.getBarkWord());
-        }
     }
 }

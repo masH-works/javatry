@@ -377,6 +377,10 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_withDelegation() {
         // your confirmation code here
+        Animal cat = new Cat();
+        log(cat.bark().getBarkWord());
+        Animal zombie = new Zombie();
+        log(zombie.bark().getBarkWord());
     }
 
     /**

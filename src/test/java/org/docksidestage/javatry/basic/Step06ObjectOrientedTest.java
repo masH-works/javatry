@@ -376,9 +376,10 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      * 抽象クラス肥大化を抑制するためにも、Animalのbark()のプロセス(処理)をBarkingProcessクラスとして切り出しましょう)
      */
     public void test_objectOriented_writing_withDelegation() {
-        // your confirmation code here
+        // cat
         Animal cat = new Cat();
         log(cat.bark().getBarkWord());
+        // zombie
         Zombie zombie = new Zombie();
         log("before:" + zombie.getZombieDiary().getBreatheInCount());
         log(zombie.bark().getBarkWord());

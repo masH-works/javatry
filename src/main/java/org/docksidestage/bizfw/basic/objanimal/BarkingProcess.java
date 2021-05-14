@@ -3,6 +3,9 @@ package org.docksidestage.bizfw.basic.objanimal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author masH
+ */
 public class BarkingProcess {
     // ===================================================================================
     //                                                                          Definition
@@ -12,7 +15,7 @@ public class BarkingProcess {
     // ===================================================================================
     //                                                                           attribute
     //                                                                           =========    
-    private Animal animal;
+    private final Animal animal;
 
     // ===================================================================================
     //                                                                         Constructor

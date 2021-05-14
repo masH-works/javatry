@@ -21,7 +21,6 @@ package org.docksidestage.bizfw.basic.objanimal;
  * @author masH
  */
 public class Zombie extends Animal {
-
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
@@ -54,10 +53,11 @@ public class Zombie extends Animal {
     // ===================================================================================
     //                                                                               Bark
     //                                                                              ======
-    protected void breatheIn() {
-        // TODO: BarkingProcessへとbreatheIn関数が移動したためsuper.BreatheInが処理できなくなっているため対応
-        new BarkingProcess(this).breatheIn();
+    @Override
+    public BarkedSound bark() {
+        BarkedSound barkSound = super.bark();
         zombieDiary.countBreatheIn();
+        return barkSound;
     }
 
     @Override

@@ -379,8 +379,10 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         // your confirmation code here
         Animal cat = new Cat();
         log(cat.bark().getBarkWord());
-        Animal zombie = new Zombie();
+        Zombie zombie = new Zombie();
+        log("before:" + zombie.getZombieDiary().getBreatheInCount());
         log(zombie.bark().getBarkWord());
+        log("after:" + zombie.getZombieDiary().getBreatheInCount());
     }
 
     /**

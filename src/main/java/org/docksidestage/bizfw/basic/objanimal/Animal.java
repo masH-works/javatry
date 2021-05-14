@@ -48,6 +48,7 @@ public abstract class Animal implements Loudable {
     }
 
     public BarkedSound bark() {
+        // newする所だけ差し替えたい
         BarkingProcess barkingProcess = new BarkingProcess(this);
         return barkingProcess.bark();
     }

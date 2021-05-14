@@ -17,6 +17,7 @@ public class ZombieBarkingProcess extends BarkingProcess {
 
     @Override
     public BarkedSound bark() {
+        // breatheIn()だけでよい
         breatheIn();
         this.zombie.getZombieDiary().countBreatheIn();
         prepareAbdominalMuscle();

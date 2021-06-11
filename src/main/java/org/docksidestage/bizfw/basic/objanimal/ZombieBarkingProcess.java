@@ -1,5 +1,7 @@
 package org.docksidestage.bizfw.basic.objanimal;
 
+import static org.docksidestage.bizfw.basic.objanimal.BarkingProcess.logger;
+
 public class ZombieBarkingProcess extends BarkingProcess {
 
     // ===================================================================================
@@ -15,14 +17,20 @@ public class ZombieBarkingProcess extends BarkingProcess {
         this.zombie = zombie;
     }
 
+    //    @Override
+    //    public BarkedSound bark() {
+    //        // breatheIn()だけでよい
+    //        breatheIn();
+    //        prepareAbdominalMuscle();
+    //        String barkWord = zombie.getBarkWord();
+    //        BarkedSound barkedSound = doBark(barkWord);
+    //        return barkedSound;
+    //    }
+
     @Override
-    public BarkedSound bark() {
-        // breatheIn()だけでよい
-        breatheIn();
+    protected void breatheIn() {
+        logger.debug("...Breathing in"); // dummy implementation
+        animal.downHitPoint();
         this.zombie.getZombieDiary().countBreatheIn();
-        prepareAbdominalMuscle();
-        String barkWord = zombie.getBarkWord();
-        BarkedSound barkedSound = doBark(barkWord);
-        return barkedSound;
     }
 }

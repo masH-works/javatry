@@ -1,5 +1,8 @@
 package org.docksidestage.bizfw.basic.objanimal;
 
+/* 
+ * @author masH
+ */
 public class ZombieBarkingProcess extends BarkingProcess {
 
     // ===================================================================================

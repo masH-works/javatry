@@ -34,7 +34,6 @@ public abstract class Animal implements Loudable {
     //                                                                           Attribute
     //                                                                           =========
     protected int hitPoint;
-    //    public BarkingProcess barkingProcess = new BarkingProcess(this);
 
     // ===================================================================================
     //                                                                         Constructor
@@ -47,13 +46,15 @@ public abstract class Animal implements Loudable {
         return 10; // as default
     }
 
+    // ===================================================================================
+    //                                                                               Bark
+    //                                                                              ======
     public BarkedSound bark() {
-        // newする所だけ差し替えたい
-
-        return getBarkingProcess().bark();
+        return createBarkingProcess().bark();
     }
 
-    protected BarkingProcess getBarkingProcess() {
+    protected BarkingProcess createBarkingProcess() {
+        // Factory Method パターン
         return new BarkingProcess(this);
     }
 

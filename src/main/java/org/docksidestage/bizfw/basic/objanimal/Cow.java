@@ -26,11 +26,17 @@ public class Cow extends Animal implements SlowRunner {
         //Animal()がここで実行されている。
     }
 
+    // ===================================================================================
+    //                                                                               Bark
+    //                                                                              ======
     @Override
     protected String getBarkWord() {
         return word;
     }
 
+    // ===================================================================================
+    //                                                                              Runner
+    //                                                                              ======
     public void run() {
         logger.debug("...walking");
     }

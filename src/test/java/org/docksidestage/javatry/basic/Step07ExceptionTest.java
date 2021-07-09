@@ -15,6 +15,8 @@
  */
 package org.docksidestage.javatry.basic;
 
+import java.io.IOException;
+
 import org.docksidestage.bizfw.basic.supercar.SupercarClient;
 import org.docksidestage.javatry.basic.st7.St7BasicExceptionThrower;
 import org.docksidestage.javatry.basic.st7.St7ConstructorChallengeException;
@@ -138,7 +140,7 @@ public class Step07ExceptionTest extends PlainTestCase {
         } catch (NullPointerException e) {
             log(e);
         }
-        // your answer? => 
+        // your answer? => land,136
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -152,7 +154,8 @@ public class Step07ExceptionTest extends PlainTestCase {
         } catch (NullPointerException e) {
             log(e);
         }
-        // your answer? => 
+        // your answer? => land,150
+        // answer:piari,150
     }
 
     /**
@@ -164,7 +167,9 @@ public class Step07ExceptionTest extends PlainTestCase {
             String sea = "mystic";
             String land = !!!sea.equals("mystic") ? null : "oneman";
             String piari = !!!sea.equals("mystic") ? "plaza" : null;
-            int sum = land.length() + piari.length();
+            int landLength = land.length();
+            int piariLength = piari.length();
+            int sum = landLength + piariLength;
             log(sum);
         } catch (NullPointerException e) {
             log(e);
@@ -179,6 +184,12 @@ public class Step07ExceptionTest extends PlainTestCase {
      * (new java.io.File(".") の canonical path を取得してログに表示、I/Oエラーはメッセージとスタックトレースを代わりに)
      */
     public void test_exception_checkedException_basic() {
+        try {
+            String canonicalPath = new java.io.File(".").getCanonicalPath();
+            log(canonicalPath);
+        } catch (IOException e) {
+            log(e);
+        }
     }
 
     // ===================================================================================
@@ -199,9 +210,9 @@ public class Step07ExceptionTest extends PlainTestCase {
             Throwable cause = e.getCause();
             sea = cause.getMessage();
             land = cause.getClass().getSimpleName();
-            log(sea); // your answer? => 
-            log(land); // your answer? => 
-            log(e); // your answer? => 
+            log(sea); // your answer? => NumberFormatException
+            log(land); // your answer? => Failed to call the second help method: symbol=-1
+            log(e); // your answer? => IllegalStateException
         }
     }
 

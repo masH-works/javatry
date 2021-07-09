@@ -190,6 +190,8 @@ public class Step07ExceptionTest extends PlainTestCase {
         } catch (IOException e) {
             log(e);
         }
+        // memo:Exceprionを直接継承しているものをtry-catch等によってエラーハンドリングを強制される(RuntimeExceptionを除く)
+        // しかし、最近ではラムダ式等との相性が悪く、流行っていない
     }
 
     // ===================================================================================
@@ -210,9 +212,9 @@ public class Step07ExceptionTest extends PlainTestCase {
             Throwable cause = e.getCause();
             sea = cause.getMessage();
             land = cause.getClass().getSimpleName();
-            log(sea); // your answer? => NumberFormatException
-            log(land); // your answer? => Failed to call the second help method: symbol=-1
-            log(e); // your answer? => IllegalStateException
+            log(sea); // your answer? => NumberFormatException                              answer:Failed to call the third help method: symbol=-1
+            log(land); // your answer? => Failed to call the second help method: symbol=-1  answer:IllegalArgumentException
+            log(e); // your answer? => IllegalStateException                                answer:NumberFormatException
         }
     }
 
@@ -259,8 +261,9 @@ public class Step07ExceptionTest extends PlainTestCase {
             // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
             // What happens? Write situation and cause here. (何が起きた？状況と原因をここに書いてみましょう)
             // - - - - - - - - - -
-            //
-            //
+            //The kawaii face is not useful to make screw: ScrewSpec:{\(^_^)/}
+            //at org.docksidestage.bizfw.basic.screw.SpecialScrewManufacturer.makeSpecialScrew(SpecialScrewManufacturer.java:28)
+            //上で発生した例外をこのcatchまでハンドリングが成されなかった状況
             //
             // _/_/_/_/_/_/_/_/_/_/
         }
